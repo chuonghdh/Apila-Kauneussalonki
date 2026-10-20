@@ -17,7 +17,7 @@ export function BrandLogo({ className, inverted = false }: { className?: string;
         <span
           className={cn(
             'text-[0.6rem] font-semibold uppercase tracking-[0.25em]',
-            inverted ? 'text-leaf' : 'text-leaf',
+            inverted ? 'text-leaf' : 'text-leaf-text',
           )}
         >
           Kauneussalonki

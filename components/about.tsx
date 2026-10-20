@@ -1,14 +1,14 @@
 import Image from 'next/image'
-import { Clock, Leaf, Sparkles } from 'lucide-react'
+import { Clock, HandHeart, Leaf } from 'lucide-react'
 import type { Dictionary } from '@/lib/i18n'
 
-const icons = [Leaf, Sparkles, Clock]
+const icons = [Leaf, HandHeart, Clock]
 
 export function About({ t }: { t: Dictionary['about'] }) {
   return (
     <section id="about" className="scroll-mt-20 bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16">
-        <div className="relative mx-auto aspect-square w-full max-w-md">
+        <div className="reveal-fade relative mx-auto aspect-square w-full max-w-md">
           <div className="absolute inset-0 rounded-full border-8 border-background shadow-lg">
             <Image
               src="/images/logo.jpg"
@@ -20,8 +20,8 @@ export function About({ t }: { t: Dictionary['about'] }) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf">{t.eyebrow}</p>
+        <div className="reveal flex flex-col gap-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf-text">{t.eyebrow}</p>
           <h2 className="font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
           <p className="leading-relaxed text-muted-foreground">
             <strong className="font-semibold text-primary">{t.brand}</strong> {t.body}

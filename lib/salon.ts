@@ -8,6 +8,9 @@ export const salon = {
   email: 'apilakauneussalonki@gmail.com',
   street: 'Vihinkuja 1 A 27',
   city: '33820 Tampere',
+  postalCode: '33820',
+  town: 'Tampere',
+  openingHours: 'Mo-Su 08:30-22:30',
   instagramHandle: 'apila_kauneussalonki',
   instagramUrl: 'https://www.instagram.com/apila_kauneussalonki',
   facebookUrl: 'https://www.facebook.com/profile.php?id=61561872403109',
@@ -35,7 +38,7 @@ export const serviceCategories: ServiceCategory[] = [
       fi: 'Puhdistavat ja kosteuttavat hoidot, jotka palauttavat ihon hehkun.',
       en: 'Cleansing and hydrating treatments that bring back your natural glow.',
     },
-    image: '/images/facial.png',
+    image: '/images/facial.webp',
     services: [
       { name: { fi: 'Kasvohoito', en: 'Facial' }, price: 60 },
       { name: { fi: 'Täydellinen kasvohoito', en: 'Complete facial' }, price: 70 },
@@ -49,7 +52,7 @@ export const serviceCategories: ServiceCategory[] = [
       fi: 'Rauhoittavat hieronnat, jotka vapauttavat jännitykset ja mielen.',
       en: 'Soothing massages that release tension and quiet the mind.',
     },
-    image: '/images/massage.png',
+    image: '/images/massage.webp',
     services: [
       { name: { fi: 'Päähieronta', en: 'Head massage' }, detail: { fi: '45 min', en: '45 min' }, price: 40 },
       { name: { fi: 'Klassinen hieronta', en: 'Classic massage' }, detail: { fi: '60 min', en: '60 min' }, price: 65 },
@@ -63,7 +66,7 @@ export const serviceCategories: ServiceCategory[] = [
       fi: 'Asiantuntevasti asennetut ripset ja kauniisti muotoillut kulmat.',
       en: 'Expertly applied lashes and beautifully shaped brows.',
     },
-    image: '/images/lashes.png',
+    image: '/images/lashes.webp',
     services: [
       { name: { fi: 'Ripsien värjäys', en: 'Lash tint' }, price: 8 },
       { name: { fi: 'Kulmien värjäys ja muotoilu', en: 'Brow tint & shaping' }, price: 8 },
@@ -80,7 +83,7 @@ export const serviceCategories: ServiceCategory[] = [
       fi: 'Huolellinen kynsien ja ihon hoito käsille ja jaloille.',
       en: 'Careful nail and skin care for your hands and feet.',
     },
-    image: '/images/hands-feet.png',
+    image: '/images/hands-feet.webp',
     services: [
       { name: { fi: 'Käsihoito', en: 'Manicure' }, price: 40 },
       { name: { fi: 'Spa-käsihoito', en: 'Spa manicure' }, price: 45 },

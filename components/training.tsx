@@ -12,8 +12,8 @@ export function Training({ t }: { t: Dictionary['training'] }) {
   return (
     <section id="training" className="scroll-mt-20 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16">
-        <div className="flex flex-col gap-6 md:order-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf">{t.eyebrow}</p>
+        <div className="reveal flex flex-col gap-6 md:order-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf-text">{t.eyebrow}</p>
           <h2 className="font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
           <p className="leading-relaxed text-muted-foreground">{t.lead}</p>
 
@@ -21,7 +21,10 @@ export function Training({ t }: { t: Dictionary['training'] }) {
             {t.programs.map(({ title, text }, i) => {
               const Icon = icons[i] ?? GraduationCap
               return (
-                <li key={title} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
+                <li
+                  key={title}
+                  className="flex gap-4 rounded-2xl border border-border bg-card p-5 transition-shadow duration-500 ease-out hover:shadow-md"
+                >
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
@@ -57,9 +60,9 @@ export function Training({ t }: { t: Dictionary['training'] }) {
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl md:order-1">
+        <div className="reveal-fade relative aspect-[4/5] overflow-hidden rounded-3xl md:order-1">
           <Image
-            src="/images/training.png"
+            src="/images/training.webp"
             alt={t.imageAlt}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"

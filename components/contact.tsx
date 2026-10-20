@@ -18,8 +18,8 @@ export function Contact({ t, hours }: { t: Dictionary['contact']; hours: string 
     <section id="contact" className="scroll-mt-20 bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-2 md:gap-14">
         <div className="flex flex-col gap-8">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf">{t.eyebrow}</p>
+          <div className="reveal">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf-text">{t.eyebrow}</p>
             <h2 className="mt-4 font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
           </div>
           <ul className="flex flex-col gap-5">

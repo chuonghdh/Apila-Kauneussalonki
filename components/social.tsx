@@ -13,8 +13,8 @@ export function Social({ t }: { t: Dictionary['social'] }) {
   return (
     <section className="py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf">{t.eyebrow}</p>
+        <div className="reveal mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf-text">{t.eyebrow}</p>
           <h2 className="font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
           <p className="leading-relaxed text-muted-foreground">{t.lead}</p>
         </div>
@@ -26,7 +26,7 @@ export function Social({ t }: { t: Dictionary['social'] }) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-all duration-500 ease-out hover:border-primary hover:shadow-md"
               >
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   <Icon className="size-5" />
