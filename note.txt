@@ -1,0 +1,1 @@
+Restart later: cd "D:\CodeProjects\Claude_Code_Prj02" then pnpm exec next dev -p 3100
