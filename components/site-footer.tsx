@@ -44,7 +44,7 @@ export function SiteFooter({ t }: { t: Dictionary['footer'] }) {
         </address>
       </div>
       <div className="border-t border-forest-foreground/10">
-        <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-forest-foreground/50">
+        <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-forest-foreground/60">
           © {new Date().getFullYear()} {salon.name}. {t.rights}
         </p>
       </div>

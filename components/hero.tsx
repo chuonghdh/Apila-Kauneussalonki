@@ -48,7 +48,7 @@ export function Hero({ t, hours }: { t: Dictionary['hero']; hours: string }) {
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-3xl border border-forest-foreground/15">
             <Image
-              src="/images/hero.png"
+              src="/images/hero.webp"
               alt={t.imageAlt}
               fill
               priority

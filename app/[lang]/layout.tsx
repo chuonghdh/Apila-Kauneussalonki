@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { Cormorant_Garamond, Poppins } from 'next/font/google'
 import { dictionaries, homePath, isLang, languages } from '@/lib/i18n'
+import { salon } from '@/lib/salon'
 import '../globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -29,12 +30,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: t.title,
     description: t.description,
-    generator: 'v0.app',
     alternates: {
       canonical: homePath[lang],
-      languages: { fi: homePath.fi, en: homePath.en },
+      languages: { fi: homePath.fi, en: homePath.en, 'x-default': homePath.fi },
     },
-    openGraph: { title: t.title, description: t.description, locale: lang === 'fi' ? 'fi_FI' : 'en_US' },
+    openGraph: {
+      title: t.title,
+      description: t.description,
+      siteName: salon.name,
+      type: 'website',
+      locale: lang === 'fi' ? 'fi_FI' : 'en_US',
+      alternateLocale: lang === 'fi' ? 'en_US' : 'fi_FI',
+    },
   }
 }
 

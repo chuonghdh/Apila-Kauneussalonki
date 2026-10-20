@@ -5,8 +5,14 @@ import Link from 'next/link'
 import { Globe, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { BrandLogo } from '@/components/brand-logo'
+import { FacebookIcon, InstagramIcon } from '@/components/social-icons'
 import { salon } from '@/lib/salon'
 import { homePath, type Dictionary, type Lang } from '@/lib/i18n'
+
+const socialLinks = [
+  { href: salon.instagramUrl, label: 'Instagram', Icon: InstagramIcon },
+  { href: salon.facebookUrl, label: 'Facebook', Icon: FacebookIcon },
+]
 
 export function SiteHeader({ lang, t }: { lang: Lang; t: Dictionary['nav'] }) {
   const [open, setOpen] = useState(false)
@@ -51,7 +57,22 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dictionary['nav'] }) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <ul className="flex items-center">
+            {socialLinks.map(({ href, label, Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex size-9 items-center justify-center rounded-full text-muted-foreground transition-colors duration-300 ease-out hover:bg-secondary hover:text-primary"
+                >
+                  <Icon className="size-4" />
+                  <span className="sr-only">{label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
           <span className="hidden sm:inline-flex">{languageLink}</span>
           <Button
             nativeButton={false}
@@ -65,7 +86,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dictionary['nav'] }) {
             size="icon"
             className="lg:hidden"
             aria-expanded={open}
-            aria-controls="mobile-nav"
+            aria-controls={open ? 'mobile-nav' : undefined}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}

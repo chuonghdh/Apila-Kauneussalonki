@@ -9,7 +9,7 @@ export function Offers({ t }: { t: Dictionary['offers'] }) {
   return (
     <section id="offers" className="scroll-mt-20 bg-forest py-20 text-forest-foreground md:py-28">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">{t.eyebrow}</p>
             <h2 className="mt-4 font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
@@ -23,7 +23,7 @@ export function Offers({ t }: { t: Dictionary['offers'] }) {
             return (
               <article
                 key={title}
-                className="flex flex-col gap-6 rounded-3xl border border-forest-foreground/15 bg-forest-foreground/5 p-8"
+                className="reveal flex flex-col gap-6 rounded-3xl border border-forest-foreground/15 bg-forest-foreground/5 p-8 transition-colors duration-500 ease-out hover:bg-forest-foreground/10"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-6xl font-semibold text-gold md:text-7xl">{highlight}</span>
@@ -41,7 +41,7 @@ export function Offers({ t }: { t: Dictionary['offers'] }) {
         </div>
 
         <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-forest-foreground/50">{t.terms}</p>
+          <p className="text-xs text-forest-foreground/60">{t.terms}</p>
           <Button
             nativeButton={false}
             size="lg"

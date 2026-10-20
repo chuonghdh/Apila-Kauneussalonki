@@ -10,6 +10,7 @@
   --color-forest: var(--forest);
   --color-forest-foreground: var(--forest-foreground);
   --color-leaf: var(--leaf);
+  --color-leaf-text: var(--leaf-text);
   --color-gold: var(--gold);
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -62,6 +63,7 @@
   --forest: oklch(0.25 0.055 160);
   --forest-foreground: oklch(0.96 0.015 110);
   --leaf: oklch(0.7 0.17 132);
+  --leaf-text: oklch(0.48 0.11 135);
   --gold: oklch(0.79 0.15 72);
 }
 
@@ -74,5 +76,53 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Thin, quiet icon strokes across the site */
+.lucide {
+  stroke-width: 1.5px;
+}
+
+/* Gentle scroll-linked fade-in. Browsers without scroll-driven animations
+   keep the content fully visible; reduced-motion users get no animation. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  .reveal-fade {
+    animation: reveal-fade linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-fade {
+    animation: none;
   }
 }
