@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useId, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import { ChevronDown, Droplets, Eye, Flame, Footprints, Hand, HandHeart, type LucideIcon, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -33,9 +33,10 @@ export function ServiceCategoryGrid({
 
   return (
     <div className="mt-14 flex flex-wrap items-start justify-center gap-6">
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <ServiceCategoryCard
           key={category.id}
+          index={index}
           category={category}
           lang={lang}
           labels={labels}
@@ -48,12 +49,14 @@ export function ServiceCategoryGrid({
 }
 
 function ServiceCategoryCard({
+  index,
   category,
   lang,
   labels,
   open,
   onToggle,
 }: {
+  index: number
   category: ServiceCategory
   lang: Lang
   labels: Labels
@@ -64,8 +67,11 @@ function ServiceCategoryCard({
   const Icon = categoryIcons[category.id] ?? Droplets
 
   return (
-    <article className="reveal group flex w-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition-shadow duration-500 ease-out hover:shadow-lg md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-      <div className="relative aspect-[4/3] overflow-hidden">
+    <article className="reveal group flex w-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/15 md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+      <div
+        className="image-sheen relative aspect-[4/3] overflow-hidden"
+        style={{ '--sheen-delay': `${1.6 + index * 1.1}s` } as CSSProperties}
+      >
         <Image
           src={category.image}
           alt=""

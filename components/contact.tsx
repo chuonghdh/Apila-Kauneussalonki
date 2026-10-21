@@ -23,7 +23,7 @@ export function Contact({ t, hours }: { t: Dictionary['contact']; hours: string 
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-leaf-text">{t.eyebrow}</p>
             <h2 className="mt-4 font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
           </div>
-          <ul className="flex flex-col gap-5">
+          <ul className="reveal flex flex-col gap-5">
             {items.map(({ icon: Icon, label, value, href, opensForm }) => (
               <li key={label} className="flex items-start gap-4">
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-background text-gold shadow-sm">
@@ -55,7 +55,7 @@ export function Contact({ t, hours }: { t: Dictionary['contact']; hours: string 
             <Button
               nativeButton={false}
               size="lg"
-              className="h-12 rounded-full px-8"
+              className="shine cta-lift h-12 rounded-full px-8 [--shine-delay:2.4s]"
               render={<a href={salon.bookingUrl} target="_blank" rel="noopener noreferrer" />}
             >
               {t.book}
@@ -82,7 +82,7 @@ export function Contact({ t, hours }: { t: Dictionary['contact']; hours: string 
         </div>
 
         <div className="flex flex-col gap-3">
-          <div className="min-h-80 flex-1 overflow-hidden rounded-3xl border border-border bg-muted shadow-sm">
+          <div className="reveal-fade min-h-80 flex-1 overflow-hidden rounded-3xl border border-border bg-muted shadow-sm">
             <iframe
               title={t.mapTitle}
               src={`https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`}

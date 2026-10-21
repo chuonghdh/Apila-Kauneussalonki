@@ -18,7 +18,7 @@ export function Hero({ t, promo, hours }: { t: Dictionary['hero']; promo: Dictio
             <Button
               nativeButton={false}
               size="lg"
-              className="h-12 rounded-full bg-gold px-7 text-forest hover:bg-gold/90"
+              className="shine cta-lift h-12 rounded-full bg-gold px-7 text-forest [--shine-delay:0.6s] hover:bg-gold/90"
               render={<a href={salon.bookingUrl} target="_blank" rel="noopener noreferrer" />}
             >
               {t.book}
@@ -27,7 +27,7 @@ export function Hero({ t, promo, hours }: { t: Dictionary['hero']; promo: Dictio
               nativeButton={false}
               size="lg"
               variant="outline"
-              className="h-12 rounded-full border-forest-foreground/30 bg-transparent px-7 text-forest-foreground hover:bg-forest-foreground/10 hover:text-forest-foreground"
+              className="cta-lift h-12 rounded-full border-forest-foreground/30 bg-forest-foreground/5 px-7 text-forest-foreground backdrop-blur-sm hover:bg-forest-foreground/10 hover:text-forest-foreground"
               render={<a href="#services" />}
             >
               {t.prices}
@@ -46,7 +46,7 @@ export function Hero({ t, promo, hours }: { t: Dictionary['hero']; promo: Dictio
         </div>
 
         <div className="relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-3xl border border-forest-foreground/15">
+          <div className="image-sheen relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-3xl border border-forest-foreground/15 [--sheen-delay:1s]">
             <Image
               src="/images/hero.webp"
               alt={t.imageAlt}
@@ -60,7 +60,7 @@ export function Hero({ t, promo, hours }: { t: Dictionary['hero']; promo: Dictio
             href={salon.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl bg-background p-4 text-foreground shadow-xl transition-shadow duration-300 ease-out hover:shadow-2xl md:-left-10"
+            className="shine shine-soft group absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl border border-white/60 bg-background/80 p-4 text-foreground shadow-xl shadow-black/20 backdrop-blur-md transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-leaf/30 md:-left-10"
           >
             <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
               <Sparkles className="size-5" aria-hidden="true" />

@@ -76,7 +76,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dictionary['nav'] }) {
           <span className="hidden sm:inline-flex">{languageLink}</span>
           <Button
             nativeButton={false}
-            className="hidden h-10 rounded-full px-5 sm:inline-flex"
+            className="shine cta-lift hidden h-10 rounded-full px-5 [--shine-delay:1.5s] sm:inline-flex"
             render={<a href={salon.bookingUrl} target="_blank" rel="noopener noreferrer" />}
           >
             {t.book}

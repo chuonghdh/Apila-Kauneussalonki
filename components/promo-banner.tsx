@@ -43,7 +43,7 @@ export function PromoBanner({
       <Button
         nativeButton={false}
         size="lg"
-        className="shine relative h-12 shrink-0 rounded-full px-8 shadow-md transition-[scale,box-shadow,background-color] duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-[0.98]"
+        className="shine cta-lift h-12 shrink-0 rounded-full px-8 shadow-md [--shine-delay:3.2s]"
         render={<a href={salon.bookingUrl} target="_blank" rel="noopener noreferrer" />}
       >
         {cta}

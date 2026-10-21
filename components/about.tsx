@@ -9,7 +9,7 @@ export function About({ t }: { t: Dictionary['about'] }) {
     <section id="about" className="scroll-mt-20 bg-secondary/60 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16">
         <div className="reveal-fade relative mx-auto aspect-square w-full max-w-md">
-          <div className="absolute inset-0 rounded-full border-8 border-background shadow-lg">
+          <div className="image-sheen absolute inset-0 overflow-hidden rounded-full border-8 border-background shadow-lg [--sheen-delay:4s]">
             <Image
               src="/images/logo.jpg"
               alt={t.logoAlt}

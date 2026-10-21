@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import type { Dictionary } from '@/lib/i18n'
 
 const cardClass =
-  'reveal flex min-w-0 flex-col gap-6 rounded-3xl border border-forest-foreground/15 bg-forest-foreground/5 p-8 transition-colors duration-500 ease-out hover:bg-forest-foreground/10'
+  'reveal flex min-w-0 flex-col gap-6 rounded-3xl border border-forest-foreground/15 bg-forest-foreground/5 p-8 transition-[background-color,translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:bg-forest-foreground/10 hover:shadow-xl hover:shadow-black/25'
 
 const iconClass = 'flex size-12 items-center justify-center rounded-full bg-leaf/20 text-leaf'
 
@@ -23,7 +23,7 @@ export function Offers({ t, promo }: { t: Dictionary['offers']; promo: Dictionar
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <article className={cardClass}>
+          <article className={cn(cardClass, 'shine shine-soft')}>
             <span className={cn(iconClass, 'float-glow')}>
               <Sparkles className="size-5" aria-hidden="true" />
             </span>
@@ -37,7 +37,7 @@ export function Offers({ t, promo }: { t: Dictionary['offers']; promo: Dictionar
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ size: 'lg' }),
-                'shine h-auto min-h-12 self-start rounded-full bg-gold px-7 py-3 text-left whitespace-normal text-forest shadow-md transition-[scale,box-shadow,background-color] duration-300 ease-out hover:scale-105 hover:bg-gold/90 hover:shadow-lg active:scale-[0.98]',
+                'shine cta-lift h-auto min-h-12 self-start rounded-full bg-gold px-7 py-3 text-left whitespace-normal text-forest shadow-md [--shine-delay:1.8s] hover:bg-gold/90',
               )}
             >
               {promo.cta}

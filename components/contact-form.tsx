@@ -153,7 +153,7 @@ export function ContactFormProvider({ lang, children }: { lang: Lang; children: 
         onClick={(e) => {
           if (e.target === e.currentTarget) close()
         }}
-        className="dialog-in m-auto w-[calc(100%-2rem)] max-w-lg overflow-hidden rounded-3xl border border-border bg-card p-0 text-foreground shadow-2xl backdrop:bg-forest/60 backdrop:backdrop-blur-sm"
+        className="dialog-in m-auto w-[calc(100%-2rem)] max-w-lg overflow-hidden rounded-3xl border border-white/60 bg-card/95 p-0 text-foreground shadow-2xl shadow-primary/25 backdrop-blur-xl backdrop:bg-forest/60 backdrop:backdrop-blur-sm"
       >
         <div className="flex items-start justify-between gap-4 bg-forest px-6 py-5 text-forest-foreground">
           <div>
