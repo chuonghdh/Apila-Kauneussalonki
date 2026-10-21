@@ -1,16 +1,16 @@
 import Image from 'next/image'
-import { Clock, MapPin } from 'lucide-react'
+import { ArrowUpRight, Clock, MapPin, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { salon } from '@/lib/salon'
 import type { Dictionary } from '@/lib/i18n'
 
-export function Hero({ t, hours }: { t: Dictionary['hero']; hours: string }) {
+export function Hero({ t, promo, hours }: { t: Dictionary['hero']; promo: Dictionary['promo']; hours: string }) {
   return (
     <section className="relative overflow-hidden bg-forest text-forest-foreground">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:py-24">
-        <div className="flex flex-col gap-7">
+        <div className="flex min-w-0 flex-col gap-7">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">{t.eyebrow}</p>
-          <h1 className="font-serif text-5xl leading-[1.05] font-medium text-balance md:text-6xl lg:text-7xl">
+          <h1 className="font-serif text-4xl leading-[1.05] font-medium text-balance break-words min-[400px]:text-5xl md:text-6xl lg:text-7xl">
             {t.titleStart} <em className="text-leaf">{t.titleEmphasis}</em>
           </h1>
           <p className="max-w-md text-base leading-relaxed text-forest-foreground/80">{t.lead}</p>
@@ -56,14 +56,23 @@ export function Hero({ t, hours }: { t: Dictionary['hero']; hours: string }) {
               className="object-cover"
             />
           </div>
-          <div className="absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl bg-background p-4 text-foreground shadow-xl md:-left-10">
-            <span className="font-serif text-4xl font-semibold text-primary">20%</span>
-            <span className="text-xs leading-snug text-muted-foreground">
-              {t.badgeLine1}
-              <br />
-              {t.badgeLine2}
+          <a
+            href={salon.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl bg-background p-4 text-foreground shadow-xl transition-shadow duration-300 ease-out hover:shadow-2xl md:-left-10"
+          >
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
+              <Sparkles className="size-5" aria-hidden="true" />
             </span>
-          </div>
+            <span className="flex flex-col leading-snug">
+              <span className="font-serif text-lg font-semibold text-primary">{promo.badgeTitle}</span>
+              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors duration-300 group-hover:text-primary">
+                {promo.badgeLink}
+                <ArrowUpRight className="size-3.5" aria-hidden="true" />
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </section>

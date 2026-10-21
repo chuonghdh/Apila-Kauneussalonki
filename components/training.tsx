@@ -3,6 +3,7 @@ import { GraduationCap, Phone, Store } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { ContactFormButton } from '@/components/contact-form'
 import { salon } from '@/lib/salon'
+import { cn } from '@/lib/utils'
 import type { Dictionary } from '@/lib/i18n'
 
 const icons = [GraduationCap, Store]
@@ -43,7 +44,7 @@ export function Training({ t }: { t: Dictionary['training'] }) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <ContactFormButton topic="training" className={buttonVariants({ size: 'lg', className: 'h-12 rounded-full px-7' })}>
+            <ContactFormButton topic="training" className={cn(buttonVariants({ size: 'lg' }), 'h-12 rounded-full px-7 hover:bg-primary/80')}>
               {t.cta}
             </ContactFormButton>
             <Button

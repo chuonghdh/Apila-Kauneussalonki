@@ -74,6 +74,11 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Tailwind v4 no longer gives buttons a pointer cursor */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
   body {
     @apply bg-background text-foreground font-sans;
   }
@@ -156,10 +161,72 @@
   animation: reveal-fade 0.3s ease-out both;
 }
 
+/* Promo banner: warm sage → golden-sage → soft emerald */
+.promo-banner {
+  background: linear-gradient(120deg, oklch(0.95 0.035 125) 0%, oklch(0.94 0.05 95) 45%, oklch(0.88 0.07 150) 100%);
+}
+
+/* Gently floating icon with a soft golden glow */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.79 0.15 72 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px oklch(0.79 0.15 72 / 0);
+  }
+}
+
+.float-glow {
+  animation:
+    float-soft 3.6s ease-in-out infinite,
+    glow-pulse 3.6s ease-in-out infinite;
+}
+
+/* A slow light sweep across a button every few seconds */
+@keyframes shine {
+  0%,
+  60% {
+    transform: translateX(-130%);
+  }
+  85%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+  transform: translateX(-130%);
+  animation: shine 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-fade,
   .chat-in,
+  .float-glow,
+  .shine::after,
   .dialog-in[open],
   .dialog-in[open]::backdrop {
     animation: none;
