@@ -11,7 +11,7 @@ const fi = {
   meta: {
     title: 'Apila Kauneussalonki | Kauneushoitola Tampere',
     description:
-      'Apila Kauneussalonki Tampereella – kasvohoidot, hieronnat, ripset ja kulmat, käsi- ja jalkahoidot sekä alan koulutukset. Avoinna klo 8.30–22.30. Varaa aika verkossa.',
+      'Apila Kauneussalonki Tampereella – kasvohoidot, hieronnat, ripset ja kulmat, käsi- ja jalkahoidot sekä alan koulutukset. Avoinna joka päivä klo 9.00–22.00. Varaa aika verkossa.',
   },
   nav: {
     services: 'Palvelut',
@@ -26,7 +26,7 @@ const fi = {
     home: 'Apila Kauneussalonki – etusivu',
     switchLanguage: 'In English',
   },
-  hours: 'Ma–Su klo 8.30–22.30',
+  hours: 'Ma–Su klo 9.00–22.00',
   hero: {
     eyebrow: 'Luonnon kauneutta · Tampere',
     titleStart: 'Missä tyylikkyys kohtaa',
@@ -43,6 +43,8 @@ const fi = {
     title: 'Tutustu palveluihimme',
     lead: 'Edullisia ja korkealaatuisia hoitoja luonnonmukaisilla tuotteilla – hellävaraisesti ja tehokkaasti.',
     book: 'Varaa aika verkossa',
+    viewPrices: 'Katso hinnasto',
+    hidePrices: 'Piilota hinnasto',
   },
   about: {
     eyebrow: 'Tietoja Apilasta',
@@ -53,7 +55,7 @@ const fi = {
     values: [
       { title: 'Luonnonmukaiset tuotteet', text: 'Hellävaraisia ja tehokkaita tuotteita, jotka kunnioittavat ihoasi.' },
       { title: 'Räätälöidyt hoidot', text: 'Jokainen hoito suunnitellaan juuri sinun tarpeisiisi.' },
-      { title: 'Joustavat aukioloajat', text: 'Avoinna klo 8.30–22.30 – rentoutuminen sopii kiireisimpäänkin päivään.' },
+      { title: 'Joustavat aukioloajat', text: 'Avoinna joka päivä klo 9.00–22.00 – rentoutuminen sopii kiireisimpäänkin päivään.' },
     ],
   },
   training: {
@@ -120,7 +122,7 @@ const en: Dictionary = {
   meta: {
     title: 'Apila Beauty Salon | Spa & Beauty Care in Tampere',
     description:
-      'Apila Kauneussalonki in Tampere – facials, massage, lashes and brows, manicures, pedicures and professional beauty training. Open 8:30–22:30. Book online.',
+      'Apila Kauneussalonki in Tampere – facials, massage, lashes and brows, manicures, pedicures and professional beauty training. Open daily 9:00–22:00. Book online.',
   },
   nav: {
     services: 'Services',
@@ -135,7 +137,7 @@ const en: Dictionary = {
     home: 'Apila Beauty Salon – home',
     switchLanguage: 'Suomeksi',
   },
-  hours: 'Mon–Sun 8:30–22:30',
+  hours: 'Mon–Sun 9:00–22:00',
   hero: {
     eyebrow: 'Natural beauty · Tampere',
     titleStart: 'Where elegance meets',
@@ -152,6 +154,8 @@ const en: Dictionary = {
     title: 'Explore our services',
     lead: 'Affordable, high-quality treatments using natural products – gentle and effective.',
     book: 'Book online',
+    viewPrices: 'View price list',
+    hidePrices: 'Hide price list',
   },
   about: {
     eyebrow: 'About Apila',
@@ -162,7 +166,7 @@ const en: Dictionary = {
     values: [
       { title: 'Natural products', text: 'Gentle, effective products that respect your skin.' },
       { title: 'Tailored treatments', text: 'Every treatment is designed around your needs.' },
-      { title: 'Flexible hours', text: 'Open 8:30–22:30 – relaxation fits into even the busiest day.' },
+      { title: 'Flexible hours', text: 'Open daily 9:00–22:00 – relaxation fits into even the busiest day.' },
     ],
   },
   training: {

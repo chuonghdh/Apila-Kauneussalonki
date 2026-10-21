@@ -25,3 +25,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# customer-supplied files (not part of the site)
+/from_apila_customer/
