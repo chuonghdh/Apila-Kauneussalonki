@@ -5,6 +5,8 @@ export const salon = {
   bookingUrl: 'https://varaa.timma.fi/apilakauneussalonki',
   phoneDisplay: '+358 44 923 9437',
   phoneHref: 'tel:+358449239437',
+  // Assumes the salon phone number is on WhatsApp; confirm with the salon.
+  whatsappUrl: 'https://wa.me/358449239437',
   email: 'apilakauneussalonki@gmail.com',
   street: 'Vihinkuja 1 A 27',
   city: '33820 Tampere',

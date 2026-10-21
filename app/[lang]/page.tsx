@@ -8,6 +8,7 @@ import { Offers } from '@/components/offers'
 import { Social } from '@/components/social'
 import { Contact } from '@/components/contact'
 import { SiteFooter } from '@/components/site-footer'
+import { ChatWidget } from '@/components/chat-widget'
 import { dictionaries, isLang } from '@/lib/i18n'
 import { salon } from '@/lib/salon'
 
@@ -47,6 +48,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         <Contact t={t.contact} hours={t.hours} />
       </main>
       <SiteFooter t={t.footer} />
+      <ChatWidget lang={lang} />
     </>
   )
 }
