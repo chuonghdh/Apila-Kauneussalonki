@@ -8,6 +8,8 @@ import { Offers } from '@/components/offers'
 import { Social } from '@/components/social'
 import { Contact } from '@/components/contact'
 import { SiteFooter } from '@/components/site-footer'
+import { ChatWidget } from '@/components/chat-widget'
+import { ContactFormProvider } from '@/components/contact-form'
 import { dictionaries, isLang } from '@/lib/i18n'
 import { salon } from '@/lib/salon'
 
@@ -34,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
   const t = dictionaries[lang]
 
   return (
-    <>
+    <ContactFormProvider lang={lang}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <SiteHeader lang={lang} t={t.nav} />
       <main>
@@ -47,6 +49,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         <Contact t={t.contact} hours={t.hours} />
       </main>
       <SiteFooter t={t.footer} />
-    </>
+      <ChatWidget lang={lang} />
+    </ContactFormProvider>
   )
 }

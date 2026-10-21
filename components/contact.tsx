@@ -1,5 +1,6 @@
 import { Clock, Mail, MapPin, Navigation, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { ContactFormButton } from '@/components/contact-form'
 import { FacebookIcon, InstagramIcon } from '@/components/social-icons'
 import { salon } from '@/lib/salon'
 import type { Dictionary } from '@/lib/i18n'
@@ -10,7 +11,7 @@ export function Contact({ t, hours }: { t: Dictionary['contact']; hours: string 
   const items = [
     { icon: MapPin, label: t.address, value: `${salon.street}, ${salon.city}`, href: salon.mapsUrl },
     { icon: Phone, label: t.phone, value: salon.phoneDisplay, href: salon.phoneHref },
-    { icon: Mail, label: t.email, value: salon.email, href: `mailto:${salon.email}` },
+    { icon: Mail, label: t.email, value: salon.email, opensForm: true },
     { icon: Clock, label: t.hours, value: hours },
   ]
 
@@ -23,14 +24,18 @@ export function Contact({ t, hours }: { t: Dictionary['contact']; hours: string 
             <h2 className="mt-4 font-serif text-4xl font-medium text-balance md:text-5xl">{t.title}</h2>
           </div>
           <ul className="flex flex-col gap-5">
-            {items.map(({ icon: Icon, label, value, href }) => (
+            {items.map(({ icon: Icon, label, value, href, opensForm }) => (
               <li key={label} className="flex items-start gap-4">
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-background text-gold shadow-sm">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-wider text-muted-foreground">{label}</p>
-                  {href ? (
+                  {opensForm ? (
+                    <ContactFormButton className="break-words text-left font-medium text-primary underline-offset-4 hover:underline">
+                      {value}
+                    </ContactFormButton>
+                  ) : href ? (
                     <a
                       href={href}
                       target={href.startsWith('http') ? '_blank' : undefined}

@@ -120,9 +120,48 @@
   }
 }
 
+/* Chat messages ease in as they arrive */
+@keyframes chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.chat-in {
+  animation: chat-in 0.35s ease-out both;
+}
+
+/* Contact form dialog */
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dialog-in[open] {
+  animation: dialog-in 0.3s ease-out both;
+}
+
+.dialog-in[open]::backdrop {
+  animation: reveal-fade 0.3s ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .reveal-fade {
+  .reveal-fade,
+  .chat-in,
+  .dialog-in[open],
+  .dialog-in[open]::backdrop {
     animation: none;
   }
 }
