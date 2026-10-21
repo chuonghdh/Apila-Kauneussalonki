@@ -77,7 +77,6 @@ const fi = {
     priceRange: '200 € – 2 000 €',
     priceNote: 'Hinta riippuu koulutuksen sisällöstä ja kestosta. Pyydä tarjous!',
     cta: 'Kysy koulutuksista',
-    emailSubject: 'Koulutuskysely',
     call: 'Soita',
   },
   offers: {
@@ -188,7 +187,6 @@ const en: Dictionary = {
     priceRange: '€200 – €2,000',
     priceNote: 'Pricing depends on course content and length. Ask us for a quote!',
     cta: 'Ask about training',
-    emailSubject: 'Training enquiry',
     call: 'Call',
   },
   offers: {

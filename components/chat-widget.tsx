@@ -14,8 +14,10 @@ import {
   X,
   type LucideIcon,
 } from 'lucide-react'
+import { useContactForm } from '@/components/contact-form'
 import { cn } from '@/lib/utils'
 import { chatNodes, type ChatAction, type ChatIcon, type NodeId } from '@/lib/chatbot'
+import type { ContactTopic } from '@/lib/contact'
 import type { Lang } from '@/lib/i18n'
 
 type Text = Record<Lang, string>
@@ -50,6 +52,7 @@ export function ChatWidget({ lang: pageLang }: { lang: Lang }) {
   const panelRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const panelId = useId()
+  const openContactForm = useContactForm()
 
   useEffect(() => {
     const el = scrollRef.current
@@ -147,6 +150,10 @@ export function ChatWidget({ lang: pageLang }: { lang: Lang }) {
                 onLink={(action) => {
                   if (action.closesChat) setOpen(false)
                 }}
+                onForm={(topic) => {
+                  setOpen(false)
+                  openContactForm(topic)
+                }}
                 onRestart={() => go('main', ui.mainMenu)}
               />
             ),
@@ -175,6 +182,7 @@ function BotMessage({
   active,
   onNode,
   onLink,
+  onForm,
   onRestart,
 }: {
   node: NodeId
@@ -182,6 +190,7 @@ function BotMessage({
   active: boolean
   onNode: (to: NodeId, label: Text) => void
   onLink: (action: Extract<ChatAction, { kind: 'link' }>) => void
+  onForm: (topic: ContactTopic) => void
   onRestart: () => void
 }) {
   const { text, list, actions } = chatNodes[node]
@@ -221,6 +230,16 @@ function BotMessage({
               >
                 {action.label[lang]}
               </button>
+            ) : action.kind === 'form' ? (
+              <button
+                key={`form-${action.topic}`}
+                type="button"
+                onClick={() => onForm(action.topic)}
+                className={cn(optionClass, filledOptionClass)}
+              >
+                <Mail className="size-3.5" aria-hidden="true" />
+                {action.label[lang]}
+              </button>
             ) : (
               <LinkOption key={action.href} action={action} lang={lang} onClick={() => onLink(action)} />
             ),
@@ -253,13 +272,15 @@ function LinkOption({
       onClick={onClick}
       target={action.external ? '_blank' : undefined}
       rel={action.external ? 'noopener noreferrer' : undefined}
-      className={cn(optionClass, 'gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')}
+      className={cn(optionClass, filledOptionClass)}
     >
       <Icon className="size-3.5" aria-hidden="true" />
       {action.label[lang]}
     </a>
   )
 }
+
+const filledOptionClass = 'gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground'
 
 const optionClass =
   'inline-flex items-center rounded-full border border-primary/30 px-3.5 py-2 text-sm font-medium text-primary transition-colors duration-300 ease-out hover:border-primary hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'

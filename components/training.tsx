@@ -1,14 +1,13 @@
 import Image from 'next/image'
 import { GraduationCap, Phone, Store } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { ContactFormButton } from '@/components/contact-form'
 import { salon } from '@/lib/salon'
 import type { Dictionary } from '@/lib/i18n'
 
 const icons = [GraduationCap, Store]
 
 export function Training({ t }: { t: Dictionary['training'] }) {
-  const mailto = `mailto:${salon.email}?subject=${encodeURIComponent(t.emailSubject)}`
-
   return (
     <section id="training" className="scroll-mt-20 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16">
@@ -44,9 +43,9 @@ export function Training({ t }: { t: Dictionary['training'] }) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Button nativeButton={false} size="lg" className="h-12 rounded-full px-7" render={<a href={mailto} />}>
+            <ContactFormButton topic="training" className={buttonVariants({ size: 'lg', className: 'h-12 rounded-full px-7' })}>
               {t.cta}
-            </Button>
+            </ContactFormButton>
             <Button
               nativeButton={false}
               size="lg"

@@ -1,4 +1,5 @@
 import { BrandLogo } from '@/components/brand-logo'
+import { ContactFormButton } from '@/components/contact-form'
 import { FacebookIcon, InstagramIcon } from '@/components/social-icons'
 import { salon } from '@/lib/salon'
 import type { Dictionary } from '@/lib/i18n'
@@ -38,9 +39,7 @@ export function SiteFooter({ t }: { t: Dictionary['footer'] }) {
           <a href={salon.phoneHref} className="hover:text-gold">
             {salon.phoneDisplay}
           </a>
-          <a href={`mailto:${salon.email}`} className="hover:text-gold">
-            {salon.email}
-          </a>
+          <ContactFormButton className="text-left hover:text-gold">{salon.email}</ContactFormButton>
         </address>
       </div>
       <div className="border-t border-forest-foreground/10">

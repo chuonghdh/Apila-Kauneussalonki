@@ -1,3 +1,4 @@
+import type { ContactTopic } from '@/lib/contact'
 import { dictionaries, type Lang } from '@/lib/i18n'
 import { salon, serviceCategories, type ServiceCategory } from '@/lib/salon'
 
@@ -27,6 +28,7 @@ export type ChatIcon = 'calendar' | 'phone' | 'mail' | 'whatsapp' | 'map' | 'lis
 export type ChatAction =
   | { kind: 'node'; to: NodeId; label: Text }
   | { kind: 'link'; href: string; label: Text; icon: ChatIcon; external?: boolean; closesChat?: boolean }
+  | { kind: 'form'; topic: ContactTopic; label: Text; icon: ChatIcon }
 
 export type ChatNode = {
   text: Text[]
@@ -70,12 +72,6 @@ const link = {
     icon: 'whatsapp',
     label: { fi: 'WhatsApp', en: 'WhatsApp' },
   },
-  email: {
-    kind: 'link',
-    href: `mailto:${salon.email}`,
-    icon: 'mail',
-    label: { fi: 'Lähetä sähköpostia', en: 'Send an email' },
-  },
   maps: {
     kind: 'link',
     href: salon.mapsUrl,
@@ -93,6 +89,9 @@ const link = {
 } satisfies Record<string, ChatAction>
 
 const toNode = (to: NodeId, label: Text): ChatAction => ({ kind: 'node', to, label })
+
+const messageForm = (topic: ContactTopic, label: Text): ChatAction => ({ kind: 'form', topic, icon: 'mail', label })
+const sendMessage = messageForm('general', { fi: 'Lähetä viesti', en: 'Send a message' })
 
 const backToServices = toNode('services', { fi: 'Takaisin palveluihin', en: 'Back to services' })
 const backToFaq = toNode('faq', { fi: 'Takaisin kysymyksiin', en: 'Back to questions' })
@@ -208,11 +207,11 @@ export const chatNodes: Record<NodeId, ChatNode> = {
         en: 'If you can’t make your appointment, please let us know as early as possible so we can offer the time to someone else.',
       },
       {
-        fi: 'Voit perua tai siirtää ajan soittamalla tai lähettämällä sähköpostia.',
-        en: 'You can cancel or move your booking by phone or email.',
+        fi: 'Voit perua tai siirtää ajan soittamalla tai lähettämällä meille viestin.',
+        en: 'You can cancel or move your booking by phone or by sending us a message.',
       },
     ],
-    actions: [link.call, link.email, backToFaq],
+    actions: [link.call, messageForm('booking', { fi: 'Lähetä viesti', en: 'Send a message' }), backToFaq],
   },
 
   gelRemoval: {
@@ -257,11 +256,7 @@ export const chatNodes: Record<NodeId, ChatNode> = {
       },
     ],
     actions: [
-      {
-        ...link.email,
-        href: `mailto:${salon.email}?subject=${encodeURIComponent(fi.training.emailSubject)}`,
-        label: { fi: 'Kysy koulutuksista', en: 'Ask about training' },
-      },
+      messageForm('training', { fi: 'Kysy koulutuksista', en: 'Ask about training' }),
       link.call,
       backToFaq,
     ],
@@ -273,6 +268,6 @@ export const chatNodes: Record<NodeId, ChatNode> = {
       { label: { fi: 'Puhelin', en: 'Phone' }, value: { fi: salon.phoneDisplay, en: salon.phoneDisplay } },
       { label: { fi: 'Sähköposti', en: 'Email' }, value: { fi: salon.email, en: salon.email } },
     ],
-    actions: [link.call, link.whatsapp, link.email],
+    actions: [link.call, link.whatsapp, sendMessage],
   },
 }
