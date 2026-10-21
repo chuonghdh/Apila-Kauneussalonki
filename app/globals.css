@@ -74,6 +74,11 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Tailwind v4 no longer gives buttons a pointer cursor */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
   body {
     @apply bg-background text-foreground font-sans;
   }
@@ -156,10 +161,164 @@
   animation: reveal-fade 0.3s ease-out both;
 }
 
+/* Promo banner: warm sage → golden-sage → soft emerald */
+.promo-banner {
+  background: linear-gradient(120deg, oklch(0.95 0.035 125) 0%, oklch(0.94 0.05 95) 45%, oklch(0.88 0.07 150) 100%);
+}
+
+/* Gently floating icon with a soft golden glow */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.79 0.15 72 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px oklch(0.79 0.15 72 / 0);
+  }
+}
+
+.float-glow {
+  animation:
+    float-soft 3.6s ease-in-out infinite,
+    glow-pulse 3.6s ease-in-out infinite;
+}
+
+/* A slow light sweep across a button every few seconds */
+@keyframes shine {
+  0%,
+  60% {
+    transform: translateX(-130%);
+  }
+  85%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+/* In the components layer so utilities such as `absolute` still win.
+   Tune per element with --shine-duration, --shine-delay and --shine-alpha. */
+@layer components {
+  .shine {
+    /* Declared here so a nested .shine never inherits a parent's settings */
+    --shine-duration: 4.5s;
+    --shine-delay: 0s;
+    --shine-alpha: 0.45;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgb(255 255 255 / var(--shine-alpha)) 50%,
+      transparent 70%
+    );
+    transform: translateX(-130%);
+    animation: shine var(--shine-duration) ease-in-out var(--shine-delay) infinite;
+    pointer-events: none;
+  }
+
+  /* Fainter, slower sweep for highlight cards */
+  .shine-soft {
+    --shine-duration: 9s;
+    --shine-alpha: 0.16;
+  }
+
+  /* Primary CTA: gentle lift on real hover, press on click. Scale does not
+     affect layout, so neighbouring content never shifts. */
+  .cta-lift {
+    transition:
+      scale 0.3s ease-out,
+      box-shadow 0.3s ease-out,
+      background-color 0.3s ease-out;
+  }
+
+  @media (hover: hover) {
+    .cta-lift:hover {
+      scale: 1.04;
+      box-shadow: 0 14px 30px -14px oklch(0.34 0.07 158 / 0.55);
+    }
+  }
+
+  .cta-lift:active {
+    scale: 0.98;
+  }
+
+  /* Soft diagonal glint across an image. Only transform is animated, so it
+     stays on the compositor. Stagger with --sheen-delay. */
+  .image-sheen {
+    --sheen-duration: 7s;
+    --sheen-delay: 0s;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .image-sheen::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    bottom: -10%;
+    left: 0;
+    z-index: 1;
+    width: 45%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.22), transparent);
+    filter: blur(6px);
+    transform: translateX(-160%) skewX(-20deg);
+    animation: sheen var(--sheen-duration) ease-in-out var(--sheen-delay) infinite;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  @media (hover: hover) {
+    .image-sheen:hover::after {
+      animation: sheen-once 1.2s ease-out;
+    }
+  }
+}
+
+@keyframes sheen {
+  0%,
+  72% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+@keyframes sheen-once {
+  from {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-fade,
   .chat-in,
+  .float-glow,
+  .shine::after,
+  .image-sheen::after,
+  .image-sheen:hover::after,
   .dialog-in[open],
   .dialog-in[open]::backdrop {
     animation: none;

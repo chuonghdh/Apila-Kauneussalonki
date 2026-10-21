@@ -40,11 +40,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <SiteHeader lang={lang} t={t.nav} />
       <main>
-        <Hero t={t.hero} hours={t.hours} />
-        <Services lang={lang} t={t.services} />
+        <Hero t={t.hero} promo={t.promo} hours={t.hours} />
+        <Services lang={lang} t={t.services} promo={t.promo} />
         <About t={t.about} />
         <Training t={t.training} />
-        <Offers t={t.offers} />
+        <Offers t={t.offers} promo={t.promo} />
         <Social t={t.social} />
         <Contact t={t.contact} hours={t.hours} />
       </main>

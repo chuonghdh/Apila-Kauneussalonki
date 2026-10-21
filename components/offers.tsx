@@ -1,11 +1,16 @@
-import { Gift, Percent } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { ExternalLink, Gift, Sparkles } from 'lucide-react'
+import { buttonVariants } from '@/components/ui/button'
+import { ContactFormButton } from '@/components/contact-form'
 import { salon } from '@/lib/salon'
+import { cn } from '@/lib/utils'
 import type { Dictionary } from '@/lib/i18n'
 
-const icons = [Percent, Gift]
+const cardClass =
+  'reveal flex min-w-0 flex-col gap-6 rounded-3xl border border-forest-foreground/15 bg-forest-foreground/5 p-8 transition-[background-color,translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:bg-forest-foreground/10 hover:shadow-xl hover:shadow-black/25'
 
-export function Offers({ t }: { t: Dictionary['offers'] }) {
+const iconClass = 'flex size-12 items-center justify-center rounded-full bg-leaf/20 text-leaf'
+
+export function Offers({ t, promo }: { t: Dictionary['offers']; promo: Dictionary['promo'] }) {
   return (
     <section id="offers" className="scroll-mt-20 bg-forest py-20 text-forest-foreground md:py-28">
       <div className="mx-auto max-w-6xl px-5">
@@ -18,38 +23,46 @@ export function Offers({ t }: { t: Dictionary['offers'] }) {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {t.items.map(({ highlight, title, text }, i) => {
-            const Icon = icons[i] ?? Gift
-            return (
-              <article
-                key={title}
-                className="reveal flex flex-col gap-6 rounded-3xl border border-forest-foreground/15 bg-forest-foreground/5 p-8 transition-colors duration-500 ease-out hover:bg-forest-foreground/10"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-serif text-6xl font-semibold text-gold md:text-7xl">{highlight}</span>
-                  <span className="flex size-12 items-center justify-center rounded-full bg-leaf/20 text-leaf">
-                    <Icon className="size-5" aria-hidden="true" />
-                  </span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-forest-foreground/70">{text}</p>
-                </div>
-              </article>
-            )
-          })}
-        </div>
+          <article className={cn(cardClass, 'shine shine-soft')}>
+            <span className={cn(iconClass, 'float-glow')}>
+              <Sparkles className="size-5" aria-hidden="true" />
+            </span>
+            <div className="flex-1">
+              <h3 className="font-serif text-2xl font-medium">{t.campaignTitle}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-forest-foreground/75">{promo.text}</p>
+            </div>
+            <a
+              href={salon.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ size: 'lg' }),
+                'shine cta-lift h-auto min-h-12 self-start rounded-full bg-gold px-7 py-3 text-left whitespace-normal text-forest shadow-md [--shine-delay:1.8s] hover:bg-gold/90',
+              )}
+            >
+              {promo.cta}
+              <ExternalLink className="size-4" aria-hidden="true" />
+            </a>
+          </article>
 
-        <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-forest-foreground/60">{t.terms}</p>
-          <Button
-            nativeButton={false}
-            size="lg"
-            className="h-12 rounded-full bg-gold px-7 text-forest hover:bg-gold/90"
-            render={<a href={salon.bookingUrl} target="_blank" rel="noopener noreferrer" />}
-          >
-            {t.book}
-          </Button>
+          <article className={cardClass}>
+            <span className={iconClass}>
+              <Gift className="size-5" aria-hidden="true" />
+            </span>
+            <div className="flex-1">
+              <h3 className="font-serif text-2xl font-medium">{t.giftTitle}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-forest-foreground/75">{t.giftText}</p>
+            </div>
+            <ContactFormButton
+              topic="giftcards"
+              className={cn(
+                buttonVariants({ size: 'lg', variant: 'outline' }),
+                'h-12 self-start rounded-full border-forest-foreground/30 bg-transparent px-7 text-forest-foreground hover:bg-forest-foreground/10 hover:text-forest-foreground',
+              )}
+            >
+              {t.giftCta}
+            </ContactFormButton>
+          </article>
         </div>
       </div>
     </section>

@@ -89,7 +89,7 @@ export function ChatWidget({ lang: pageLang }: { lang: Lang }) {
           if (e.key === 'Escape') close()
         }}
         className={cn(
-          'fixed right-4 bottom-22 z-[60] flex h-[min(36rem,calc(100dvh-7.5rem))] w-[calc(100vw-2rem)] max-w-sm origin-bottom-right flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-2xl outline-none transition-[opacity,scale,translate] duration-300 ease-out motion-reduce:transition-none sm:right-6 sm:bottom-24',
+          'fixed right-4 bottom-22 z-[60] flex h-[min(36rem,calc(100dvh-7.5rem))] w-[calc(100vw-2rem)] max-w-sm origin-bottom-right flex-col overflow-hidden rounded-3xl border border-white/60 bg-card/90 shadow-2xl shadow-primary/20 backdrop-blur-xl outline-none transition-[opacity,scale,translate] duration-300 ease-out motion-reduce:transition-none sm:right-6 sm:bottom-24',
           open ? 'translate-y-0 scale-100 opacity-100' : 'pointer-events-none translate-y-3 scale-95 opacity-0',
         )}
       >
@@ -167,7 +167,7 @@ export function ChatWidget({ lang: pageLang }: { lang: Lang }) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => (open ? close() : setOpen(true))}
-        className="fixed right-4 bottom-4 z-[60] flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-[translate,background-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:right-6 sm:bottom-6"
+        className="fixed right-4 bottom-4 z-[60] flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg ring-4 shadow-primary/30 ring-white/40 transition-[translate,background-color,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:right-6 sm:bottom-6"
       >
         {open ? <X className="size-6" aria-hidden="true" /> : <MessageCircle className="size-6" aria-hidden="true" />}
         <span className="sr-only">{open ? ui.close[lang] : ui.open[lang]}</span>

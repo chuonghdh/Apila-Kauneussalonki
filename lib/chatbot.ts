@@ -96,7 +96,8 @@ const sendMessage = messageForm('general', { fi: 'Lähetä viesti', en: 'Send a 
 const backToServices = toNode('services', { fi: 'Takaisin palveluihin', en: 'Back to services' })
 const backToFaq = toNode('faq', { fi: 'Takaisin kysymyksiin', en: 'Back to questions' })
 
-const [advanceOffer, giftOffer] = [0, 1].map((i) => ({ fi: fi.offers.items[i], en: en.offers.items[i] }))
+const promoText: Text = { fi: fi.promo.text, en: en.promo.text }
+const promoLink: ChatAction = { ...link.book, label: { fi: fi.promo.cta, en: en.promo.cta } }
 
 export const chatNodes: Record<NodeId, ChatNode> = {
   main: {
@@ -121,10 +122,7 @@ export const chatNodes: Record<NodeId, ChatNode> = {
         fi: `Voit varata ajan helposti verkossa. Voit myös soittaa meille numeroon ${salon.phoneDisplay}.`,
         en: `You can book easily online, or call us on ${salon.phoneDisplay}.`,
       },
-      {
-        fi: `${advanceOffer.fi.text} ${fi.offers.terms}`,
-        en: `${advanceOffer.en.text} ${en.offers.terms}`,
-      },
+      promoText,
     ],
     actions: [link.book, link.call, toNode('hours', { fi: 'Aukioloajat & osoite', en: 'Hours & address' })],
   },
@@ -239,12 +237,18 @@ export const chatNodes: Record<NodeId, ChatNode> = {
   },
 
   offers: {
-    text: [{ fi: 'Ajankohtaiset tarjouksemme:', en: 'Our current offers:' }],
-    list: [advanceOffer, giftOffer].map((o) => ({
-      label: { fi: o.fi.title, en: o.en.title },
-      value: { fi: o.fi.highlight, en: o.en.highlight },
-    })),
-    actions: [link.book, backToFaq],
+    text: [
+      promoText,
+      {
+        fi: 'Lahjakortti on myös ihana lahja läheiselle – kysy meiltä lisää.',
+        en: 'A gift card also makes a lovely present – just ask us.',
+      },
+    ],
+    actions: [
+      promoLink,
+      messageForm('giftcards', { fi: fi.offers.giftCta, en: en.offers.giftCta }),
+      backToFaq,
+    ],
   },
 
   training: {

@@ -1,9 +1,17 @@
-import { Button } from '@/components/ui/button'
+import { PromoBanner } from '@/components/promo-banner'
 import { ServiceCategoryGrid } from '@/components/service-category'
-import { salon, serviceCategories } from '@/lib/salon'
+import { serviceCategories } from '@/lib/salon'
 import type { Dictionary, Lang } from '@/lib/i18n'
 
-export function Services({ lang, t }: { lang: Lang; t: Dictionary['services'] }) {
+export function Services({
+  lang,
+  t,
+  promo,
+}: {
+  lang: Lang
+  t: Dictionary['services']
+  promo: Dictionary['promo']
+}) {
   return (
     <section id="services" className="scroll-mt-20 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5">
@@ -19,16 +27,7 @@ export function Services({ lang, t }: { lang: Lang; t: Dictionary['services'] })
           labels={{ open: t.viewPrices, close: t.hidePrices }}
         />
 
-        <div className="mt-12 flex justify-center">
-          <Button
-            nativeButton={false}
-            size="lg"
-            className="h-12 rounded-full px-8"
-            render={<a href={salon.bookingUrl} target="_blank" rel="noopener noreferrer" />}
-          >
-            {t.book}
-          </Button>
-        </div>
+        <PromoBanner promo={promo} cta={t.book} className="mt-14" />
       </div>
     </section>
   )

@@ -3,6 +3,7 @@ import { GraduationCap, Phone, Store } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { ContactFormButton } from '@/components/contact-form'
 import { salon } from '@/lib/salon'
+import { cn } from '@/lib/utils'
 import type { Dictionary } from '@/lib/i18n'
 
 const icons = [GraduationCap, Store]
@@ -22,7 +23,7 @@ export function Training({ t }: { t: Dictionary['training'] }) {
               return (
                 <li
                   key={title}
-                  className="flex gap-4 rounded-2xl border border-border bg-card p-5 transition-shadow duration-500 ease-out hover:shadow-md"
+                  className="flex gap-4 rounded-2xl border border-border bg-card p-5 transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/15"
                 >
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
                     <Icon className="size-5" aria-hidden="true" />
@@ -43,7 +44,7 @@ export function Training({ t }: { t: Dictionary['training'] }) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <ContactFormButton topic="training" className={buttonVariants({ size: 'lg', className: 'h-12 rounded-full px-7' })}>
+            <ContactFormButton topic="training" className={cn(buttonVariants({ size: 'lg' }), 'h-12 rounded-full px-7 hover:bg-primary/80')}>
               {t.cta}
             </ContactFormButton>
             <Button
@@ -59,7 +60,7 @@ export function Training({ t }: { t: Dictionary['training'] }) {
           </div>
         </div>
 
-        <div className="reveal-fade relative aspect-[4/5] overflow-hidden rounded-3xl md:order-1">
+        <div className="reveal-fade image-sheen relative aspect-[4/5] overflow-hidden rounded-3xl [--sheen-delay:2.5s] md:order-1">
           <Image
             src="/images/training.webp"
             alt={t.imageAlt}

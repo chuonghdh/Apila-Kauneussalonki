@@ -19,14 +19,14 @@ export function Social({ t }: { t: Dictionary['social'] }) {
           <p className="leading-relaxed text-muted-foreground">{t.lead}</p>
         </div>
 
-        <ul className="mt-12 grid gap-4 md:grid-cols-3">
+        <ul className="reveal mt-12 grid gap-4 md:grid-cols-3">
           {links.map(({ href, label, handle, Icon }) => (
             <li key={href}>
               <a
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-all duration-500 ease-out hover:border-primary hover:shadow-md"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-[translate,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/15"
               >
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   <Icon className="size-5" />

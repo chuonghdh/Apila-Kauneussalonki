@@ -35,8 +35,13 @@ const fi = {
     book: 'Varaa aika nyt',
     prices: 'Katso hinnasto',
     imageAlt: 'Kylpylätunnelmaa: pyyhkeitä, kuumia kiviä, kukka ja kynttilöitä',
-    badgeLine1: 'alennus',
-    badgeLine2: 'ennakkovarauksista',
+  },
+  promo: {
+    title: 'Uusia tarjouksia ja kampanjoita!',
+    text: 'Meillä on usein uusia tarjouksia ja kampanjoita! Tarkista ajankohtaiset edut ja varaa aikasi Timmasta.',
+    cta: 'Katso ajankohtaiset edut Timmasta',
+    badgeTitle: 'Ajankohtaiset tarjoukset',
+    badgeLink: 'Katso Timmasta',
   },
   services: {
     eyebrow: 'Palvelut & hinnasto',
@@ -81,14 +86,12 @@ const fi = {
   },
   offers: {
     eyebrow: 'Tarjoukset',
-    title: 'Erikoistarjouksemme',
-    lead: 'Nauti ilmaisista kylpylänäytteistä, pienistä herkuista ja teetauosta jokaisen käynnin yhteydessä.',
-    items: [
-      { highlight: '20%', title: 'Alennus ennakkovarauksista', text: 'Varaa hoitosi etukäteen ja saat 20 % alennuksen kaikista ennakkovarauksista.' },
-      { highlight: '3 + 1', title: 'Lahjakorttitarjous', text: 'Osta kolme lahjakorttia, niin saat neljännen ilmaiseksi. Täydellinen lahja läheisille.' },
-    ],
-    terms: '*Ehdot voimassa.',
-    book: 'Varaa aika nyt',
+    title: 'Uusia tarjouksia ja kampanjoita!',
+    lead: 'Jokainen käynti on hetki vain sinulle: laadukkaat hoidot, rauhoittava tunnelma ja lämmin, huolehtiva palvelu alusta loppuun.',
+    campaignTitle: 'Ajankohtaiset edut',
+    giftTitle: 'Lahjakortit',
+    giftText: 'Ilahduta läheistäsi lahjakortilla – rentouttava hetki on täydellinen lahja.',
+    giftCta: 'Kysy lahjakorteista',
   },
   social: {
     eyebrow: 'Seuraa meitä',
@@ -145,8 +148,13 @@ const en: Dictionary = {
     book: 'Book an appointment',
     prices: 'View prices',
     imageAlt: 'Spa atmosphere: towels, hot stones, a flower and candles',
-    badgeLine1: 'off all',
-    badgeLine2: 'advance bookings',
+  },
+  promo: {
+    title: 'New offers and campaigns!',
+    text: 'We often have new offers and campaigns. Check current deals and book your time on Timma.',
+    cta: 'See current deals on Timma',
+    badgeTitle: 'Current offers',
+    badgeLink: 'See on Timma',
   },
   services: {
     eyebrow: 'Services & prices',
@@ -191,14 +199,12 @@ const en: Dictionary = {
   },
   offers: {
     eyebrow: 'Offers',
-    title: 'Our special offers',
-    lead: 'Enjoy free spa samples, small treats and a tea break with every visit.',
-    items: [
-      { highlight: '20%', title: 'Off advance bookings', text: 'Book your treatment ahead of time and get 20% off all advance bookings.' },
-      { highlight: '3 + 1', title: 'Gift card offer', text: 'Buy three gift cards and get the fourth one free. The perfect gift for loved ones.' },
-    ],
-    terms: '*Terms and conditions apply.',
-    book: 'Book now',
+    title: 'New offers and campaigns!',
+    lead: 'Every visit is a moment just for you: quality treatments, a calming atmosphere and warm, attentive care from start to finish.',
+    campaignTitle: 'Current deals',
+    giftTitle: 'Gift cards',
+    giftText: 'Treat someone special to a gift card – a relaxing moment is the perfect present.',
+    giftCta: 'Ask about gift cards',
   },
   social: {
     eyebrow: 'Follow us',
